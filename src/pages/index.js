@@ -1,21 +1,36 @@
-import React from "react"
-import { Link } from "gatsby"
+import React, { useRef } from "react"
+// import { Link } from "gatsby"
+import styled from "styled-components"
+import { Parallax, ParallaxLayer } from "react-spring/renderprops-addons"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
+import HeroText from "../components/HeroText"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+const Header = styled.section`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
 
+  background: #27272e;
+`
+
+const IndexPage = () => {
+  const parallaxRef = useRef()
+
+  return (
+    <Layout>
+      <SEO title="Noah Bresler" />
+      <Parallax ref={parallaxRef} pages={2}>
+        <ParallaxLayer offset={0} speed={0.5}>
+          <Header>
+            <HeroText />
+          </Header>
+        </ParallaxLayer>
+      </Parallax>
+    </Layout>
+  )
+}
 export default IndexPage
