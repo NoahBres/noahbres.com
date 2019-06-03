@@ -13,6 +13,7 @@ const WaveEmoji = ({ fontSize = "0.7em", style }) => {
       aria-label="Wave Emoji"
       onMouseEnter={() => setHover(i => true)}
       onMouseLeave={() => setHover(i => false)}
+      onTouchStart={() => setHover(i => !i)}
       style={{
         fontSize,
         transform: rotate.interpolate(r => `rotate(${r}deg)`),
