@@ -25,7 +25,7 @@ const HeroText = () => {
       xShift={nameTextSize * 4}
     >
       <span style={{ display: "flex", alignItems: "center" }}>
-        Hello <WaveEmoji />,
+        Hello <WaveEmoji style={{ marginLeft: "0.5em" }} />,
       </span>
       <span>I'm Noah Bresler</span>
     </SlidingText>
