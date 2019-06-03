@@ -6,7 +6,7 @@ import WaveEmoji from "../components/WaveEmoji"
 const nameTextSize = 5
 
 const nameStyle = `
-  color: white;
+  color: #ffd6d6;
   font-size: ${nameTextSize}em;
   font-weight: 800;
   text-transform: uppercase;
