@@ -14,7 +14,7 @@ const Header = styled.section`
   width: 100%;
   height: 100vh;
 
-  background: #27272e;
+  background: #21242d;
 `
 
 const IndexPage = () => {
