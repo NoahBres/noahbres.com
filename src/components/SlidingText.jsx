@@ -34,7 +34,7 @@ const SlidingText = ({
     >
       {trail.map(({ y, height, ...rest }, index) => (
         <AnimatedText
-          key={children[index].props.children}
+          key={children[index].props.children + index}
           className=""
           style={{
             ...rest,
