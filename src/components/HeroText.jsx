@@ -7,7 +7,7 @@ import HoverColorText from "../components/HoverColorText"
 const nameTextSize = 5
 
 const nameStyle = `
-  color: #ffd6d6;
+  color: hsl(0, 100%, 92%);
   font-size: ${nameTextSize}em;
   font-weight: 800;
   text-transform: uppercase;
