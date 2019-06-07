@@ -4,7 +4,6 @@ import { useTrail, animated } from "react-spring"
 import styled from "styled-components"
 
 const SlidingText = ({
-  text,
   toggleOnClick = false,
   style = "",
   textSize = 80,
