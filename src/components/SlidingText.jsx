@@ -22,6 +22,7 @@ const SlidingText = ({
     from: { opacity: 0, y: yShift, height: 0 },
   })
 
+  //TODO FIX Probably shouldn't do this https://www.styled-components.com/docs/basics#passed-props
   const AnimatedText = styled(animated.div)`
     ${style}
   `
