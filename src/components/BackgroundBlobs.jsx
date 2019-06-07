@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useTrail, animated } from "react-spring"
 
 import styled from "styled-components"
@@ -7,12 +7,26 @@ const Blob = styled(animated.div)`
   position: absolute;
   will-change: transform;
   border-radius: 50%;
-  background: lightcoral;
+  background: ${props => props.color};
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
   opacity: 0.6;
 
+  width: ${props => props.size}px;
+  height: ${props => props.size}px;
+
   user-select: none;
   pointer-events: none;
+
+  ::after {
+    content: "";
+    position: absolute;
+    top: ${props => props.size / 6}px;
+    left: ${props => props.size / 6}px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.8);
+  }
 `
 
 const BackgroundBlobs = ({ styling, blobs = 3 }) => {
@@ -27,6 +41,18 @@ const BackgroundBlobs = ({ styling, blobs = 3 }) => {
     xy: [0, 0],
     config: i => (i === 0 ? leadBlob : blob2),
   }))
+
+  useEffect(() => {
+    const onHover = e => {
+      set({ xy: [e.clientX, e.clientY] })
+    }
+
+    window.addEventListener("mousemove", onHover)
+
+    return () => {
+      window.removeEventListener("mousemove", onHover)
+    }
+  }, [])
 
   return (
     <div style={styling}>
@@ -45,16 +71,16 @@ const BackgroundBlobs = ({ styling, blobs = 3 }) => {
         onMouseMove={e => set({ xy: [e.clientX, e.clientY] })}
       >
         {trail.map((props, index) => {
-          const blobSize = Math.random() * 200 + 50
+          const blobSize = Math.random() * 170 + 70
 
           return (
             <Blob
               key={index}
               style={{
                 transform: props.xy.interpolate(trans),
-                width: `${blobSize}px`,
-                height: `${blobSize}px`,
               }}
+              size={blobSize}
+              color={`hsl(${Math.random() * 255}, 79%, 72%)`}
             />
           )
         })}
