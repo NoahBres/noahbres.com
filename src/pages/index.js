@@ -22,26 +22,39 @@ const IndexPage = () => {
   const parallaxRef = useRef()
 
   return (
-    // <Layout>
-    <>
+    <Layout>
       <SEO title="Noah Bresler" />
-      <Parallax ref={parallaxRef} pages={2}>
-        <ParallaxLayer offset={0} speed={0.5}>
-          <Header>
-            <HeroText />
-          </Header>
-        </ParallaxLayer>
-      </Parallax>
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          position: "absolute",
+          top: "0px",
+          left: "0px",
+          zIndex: "2",
+        }}
+      >
+        <Parallax ref={parallaxRef} pages={2}>
+          <ParallaxLayer offset={0} speed={0.5}>
+            <Header>
+              <HeroText />
+            </Header>
+          </ParallaxLayer>
+        </Parallax>
+      </div>
       <BackgroundBlobs
         styling={{
           width: "100%",
           height: "100%",
-          zIndex: "0",
           background: "#21242d",
+          position: "fixed",
+          top: "0px",
+          left: "0px",
+          zIndex: "1",
         }}
-        blobs={3}
+        blobs={Math.floor(Math.random() * 3) + 3}
       />
-    </>
+    </Layout>
   )
 }
 export default IndexPage
