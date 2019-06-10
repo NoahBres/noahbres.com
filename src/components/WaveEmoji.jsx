@@ -8,6 +8,8 @@ const WaveEmoji = ({ fontSize = "0.7em", style }) => {
   const { rotate } = useSpring({ rotate: isHovered ? 80 : 0, config })
 
   return (
+    // Because jsx-a11y/accessible-emoji doesn't recognize the animated.span b/c of react-spring, despite me actually following the rules
+    // eslint-disable-next-line
     <animated.span
       role="img"
       aria-label="Wave Emoji"
