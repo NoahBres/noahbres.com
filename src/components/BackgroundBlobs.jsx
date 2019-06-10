@@ -44,14 +44,31 @@ const BackgroundBlobs = ({ styling, blobs = 3 }) => {
 
   useEffect(() => {
     const onHover = e => {
-      set({ xy: [e.clientX, e.clientY] })
+      let posX = 0
+      let posY = 0
+      if (e.clientX && e.clientY) {
+        posX = e.clientX
+        posY = e.clientY
+      } else if (e.targetTouches.length === 1) {
+        const touch = e.targetTouches[0]
+
+        posX = touch.pageX
+        posY = touch.pageY
+      }
+      set({ xy: [posX, posY] })
     }
 
-    window.addEventListener("mousemove", onHover)
+    window.addEventListener("mousemove", onHover, false)
+    window.addEventListener("touchmove", onHover, false)
 
     return () => {
       window.removeEventListener("mousemove", onHover)
+      window.removeEventListener("touchmove", onHover)
     }
+  }, [])
+
+  useEffect(() => {
+    set({ xy: [window.innerWidth / 2, window.innerHeight / 2] })
   }, [])
 
   return (
